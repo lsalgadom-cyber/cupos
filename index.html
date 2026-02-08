@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Sobrecupos - Ing. Agrícola</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body { font-family: Arial; margin:40px; }
+h1,h2,h3 { text-align:center; }
+.kpis { display:flex; justify-content:space-around; margin:30px 0; }
+.kpi { font-size:22px; }
+.chart { width:85%; margin:40px auto; }
+</style>
+</head>
+<body>
+
+<h1>Dashboard de Sobrecupos</h1>
+<h2>Ingeniería Agrícola - UNAL Bogotá</h2>
+
+<div class="kpis">
+<div class="kpi"><b>Total solicitudes:</b><br>334</div>
+<div class="kpi"><b>Promedio avance:</b><br>45.52%</div>
+<div class="kpi"><b>Materias distintas solicitadas:</b><br>84</div>
+<div class="kpi"><b>Tipologías involucradas:</b><br>6</div>
+</div>
+
+<div class="chart">
+<h3>Top 12 Materias más solicitadas</h3>
+<canvas id="materias"></canvas>
+</div>
+
+<div class="chart">
+<h3>Distribución por Tipología</h3>
+<canvas id="tipologias"></canvas>
+</div>
+
+<div class="chart">
+<h3>Distribución por Rango de Avance</h3>
+<canvas id="avance"></canvas>
+</div>
+
+<div class="chart">
+<h3>Materias Críticas vs Rango de Avance</h3>
+<canvas id="heatmap"></canvas>
+</div>
+
+<script>
+new Chart(document.getElementById('materias'), {
+type:'bar',
+data:{
+labels:['Finanzas', 'Cálculo diferencial', 'Hidrología', 'Mecánica de sólidos', 'Poscosecha de frutas y hortalizas', 'Construcciones rurales: Manejo ambiental', 'Ingeniería económica', 'Programación orientada a objetos', 'Mecánica de suelos', 'Estática', 'Métodos numéricos', 'Probabilidad y estadística fundamental'],
+datasets:[{label:'Solicitudes', data:[28, 20, 14, 13, 13, 13, 12, 12, 12, 11, 10, 10]}]
+}
+});
+
+new Chart(document.getElementById('tipologias'), {
+type:'pie',
+data:{
+labels:['Disciplinar Obligatoria (C)', 'Fundamentación Obligatoria (B)', 'Fundamentación Optativa (B)', 'Libre Elección (L)', 'Disciplinar Optativa (C)', 'Nivelación (P)'],
+datasets:[{data:[110, 87, 60, 51, 19, 5]}]
+}
+});
+
+new Chart(document.getElementById('avance'), {
+type:'bar',
+data:{
+labels:['0-25%', '25-50%', '50-75%', '75-100%'],
+datasets:[{label:'Estudiantes', data:[88, 99, 108, 39]}]
+}
+});
+
+new Chart(document.getElementById('heatmap'), {
+type:'bar',
+data:{
+labels:['0-25%', '25-50%', '50-75%', '75-100%'],
+datasets:[
+{label:'Finanzas', data:[0, 6, 14, 8]},{label:'Cálculo diferencial', data:[19, 1, 0, 0]},{label:'Hidrología', data:[0, 2, 12, 0]},{label:'Mecánica de sólidos', data:[0, 7, 6, 0]},{label:'Poscosecha de frutas y hortalizas', data:[0, 5, 8, 0]},{label:'Construcciones rurales: Manejo ambiental', data:[0, 0, 11, 2]},
+]
+},
+options:{responsive:true, scales:{x:{stacked:true}, y:{stacked:true}}}
+});
+</script>
+
+</body>
+</html>
