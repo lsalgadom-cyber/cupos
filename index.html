@@ -3,206 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Estratégico - Ing. Agrícola UNAL</title>
+<title>Tablero Estratégico Integrado - Ing. Agrícola</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
     :root {
-        --unal-green: #2d572c; /* Verde institucional aprox */
-        --unal-dark: #1a1a1a;
+        --unal-green: #2d572c; 
+        --unal-light-green: #4caf50;
+        --facultad-gray: #7f8c8d; /* Color para representar "Otros programas" */
         --highlight: #e74c3c;
         --bg-gray: #f4f6f9;
         --card-bg: #ffffff;
     }
     body { font-family: 'Roboto', sans-serif; background-color: var(--bg-gray); margin: 0; padding: 20px; color: #333; }
     
-    /* Header */
     header { background-color: var(--unal-green); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
     h1 { margin: 0; font-size: 24px; font-weight: 700; }
     h2 { margin: 5px 0 0; font-size: 16px; font-weight: 300; opacity: 0.9; }
     .badge { background-color: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 4px; font-size: 12px; float: right; margin-top: -30px;}
 
-    /* Layout */
     .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px; }
     .full-width { grid-column: 1 / -1; }
     
-    /* Cards */
     .card { background: var(--card-bg); border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s; }
     .card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
     .card h3 { margin-top: 0; font-size: 16px; color: #555; border-bottom: 1px solid #eee; padding-bottom: 10px; }
     
-    /* KPIs */
     .kpi-value { font-size: 32px; font-weight: bold; color: var(--unal-green); }
     .kpi-sub { font-size: 13px; color: #777; }
-    .kpi-alert { color: var(--highlight); }
+    .kpi-contrast { color: var(--facultad-gray); font-size: 0.8em; font-weight: normal; }
 
-    /* Text Analysis Section */
-    .analysis-box { background-color: #e8f5e9; border-left: 5px solid var(--unal-green); padding: 15px; border-radius: 4px; line-height: 1.5; font-size: 14px; }
-    .analysis-box strong { color: var(--unal-green); }
+    .analysis-box { background-color: #e8f5e9; border-left: 5px solid var(--unal-green); padding: 15px; border-radius: 4px; line-height: 1.5; font-size: 14px; margin-bottom: 20px;}
+    .analysis-box.context { background-color: #eceff1; border-left-color: var(--facultad-gray); }
 
     canvas { width: 100% !important; height: auto !important; }
-    
     footer { text-align: center; margin-top: 40px; color: #999; font-size: 12px; }
 </style>
 </head>
 <body>
 
 <header>
-    <div class="badge">Representación Estudiantil</div>
-    <h1>Informe sobrecupos</h1>
-    <h2>Ingeniería Agrícola - Sede Bogotá</h2>
+    <div class="badge">Informe de Representación</div>
+    <h1>Tablero de Gestión de Cupos 2026</h1>
+    <h2>Ingeniería Agrícola vs. Contexto Facultad</h2>
 </header>
 
+<div class="card full-width">
+    <h3>📢 Argumentario Político: El Peso de Agrícola en la Facultad</h3>
+    <div class="analysis-box context">
+        <p><strong>1. Somos "Baratos" de Solucionar:</strong> Agrícola representa solo el <strong>5.1%</strong> de las solicitudes de toda la Facultad (334 vs 6532). Resolver nuestros sobrecupos tiene un impacto presupuestal mínimo comparado con Sistemas o Civil, pero un impacto académico enorme para nosotros.</p>
+        <p><strong>2. Diferencia en Necesidades:</strong> Mientras la Facultad pide masivamente materias Disciplinares Obligatorias (35%), en Agrícola esta proporción es similar (33%), pero tenemos una presión ligeramente mayor en <strong>Fundamentación Básica</strong> proporcionalmente a nuestro tamaño.</p>
+    </div>
+</div>
+
+<div class="grid-container">
+    <div class="card">
+        <h3>Volumen Solicitudes</h3>
+        <div class="kpi-value">334 <span class="kpi-contrast">/ 6532</span></div>
+        <div class="kpi-sub">Agrícola vs. Total Facultad</div>
+    </div>
+    <div class="card">
+        <h3>Ranking Demanda</h3>
+        <div class="kpi-value">#9</div>
+        <div class="kpi-sub">Entre las ingenierías (El de menor congestión)</div>
+    </div>
+    <div class="card">
+        <h3>Materias Críticas</h3>
+        <div class="kpi-value" style="color:#e74c3c">5</div>
+        <div class="kpi-sub">Tienen alto riesgo de detener el avance</div>
+    </div>
+    <div class="card">
+        <h3>Calidad Solicitud</h3>
+        <div class="kpi-value">92%</div>
+        <div class="kpi-sub">Estudiantes solicitan correctamente</div>
+    </div>
+</div>
+
 <div class="grid-container">
     <div class="card full-width">
-        <h3>💡 Análisis</h3>
-        <div class="analysis-box">
-            <p><strong>1. Calidad de la Demanda:</strong> Se han procesado <b>334 solicitudes</b> con un Índice de Calidad (ICS) del <b>92.22%</b>, lo que indica que la gran mayoría de peticiones son legítimas y bien formuladas por los estudiantes.</p>
-            <p><strong>2. Puntos Críticos (Cuellos de Botella):</strong> Aunque <i>Finanzas</i> tiene más solicitudes, materias como <b>Hidrología</b>, <b>Mecánica de sólidos</b> y <b>Mecánica de suelos</b> representan un riesgo mayor. Estas materias tienen un alto "Indicador Puente" y Centralidad; si no se asignan cupos aquí, se bloquea el flujo curricular hacia semestres avanzados.</p>
-            <p><strong>3. Estado del Rezago:</strong> Actualmente <b>NO se detectan casos críticos</b> de estudiantes avanzados (>50% avance) pidiendo materias de 1er a 3er semestre, lo cual es un indicador de salud académica excelente.</p>
+        <h3>🏢 Contexto: Solicitudes por Programa Curricular</h3>
+        <p style="font-size:12px; color:#666;">Ingeniería Agrícola tiene un volumen manejable. No somos el problema masivo, somos un caso específico a optimizar.</p>
+        <div style="height: 250px;">
+            <canvas id="facultyChart"></canvas>
         </div>
     </div>
 </div>
 
 <div class="grid-container">
     <div class="card">
-        <h3>Total Solicitudes</h3>
-        <div class="kpi-value">334</div>
-        <div class="kpi-sub">Materias distintas: 84</div>
+        <h3>Comparativa de Tipologías Solicitadas (%)</h3>
+        <canvas id="radarTipologias"></canvas>
     </div>
     <div class="card">
-        <h3>Materias Puente Críticas</h3>
-        <div class="kpi-value kpi-alert">5</div>
-        <div class="kpi-sub">Hidrología, Sólidos, Poscosecha...</div>
-    </div>
-    <div class="card">
-        <h3>Índice Calidad (ICS)</h3>
-        <div class="kpi-value">92.2%</div>
-        <div class="kpi-sub">Errores de tipología: 26</div>
-    </div>
-    <div class="card">
-        <h3>Avance Promedio</h3>
-        <div class="kpi-value">45.5%</div>
-        <div class="kpi-sub">Distribución balanceada</div>
+        <h3>Top Sobrecupos Internos (Agrícola)</h3>
+        <canvas id="topMateriasChart"></canvas>
     </div>
 </div>
 
-<div class="grid-container">
-    <div class="card full-width">
-        <h3>🔥 Top Sobrecupos vs. Impacto Estructural ("Materia Puente")</h3>
-        <p style="font-size:12px; color:#666;">El "Indicador Puente" mide cuánto bloquea una materia el plan de estudios. Una barra roja alta indica que negar el cupo detiene el avance de la carrera.</p>
-        <div style="height: 300px;">
-            <canvas id="bridgeChart"></canvas>
-        </div>
+<div class="card full-width" style="margin-top: 20px;">
+    <h3>🚜 Foco Interno: Materias Puente y Estructura</h3>
+    <div class="analysis-box">
+        <p><strong>Riesgo Estructural:</strong> Aunque "Finanzas" es popular, las materias que realmente preocupan son <strong>Hidrología</strong> y <strong>Mecánica de Sólidos</strong>. Estas actúan como "tapones" en el grafo del plan de estudios. Priorizar cupos aquí desbloquea el flujo de estudiantes hacia semestres superiores.</p>
     </div>
-</div>
-
-<div class="grid-container">
-    <div class="card">
-        <h3>Distribución por Tipología</h3>
-        <canvas id="tipologias"></canvas>
-    </div>
-    <div class="card">
-        <h3>Avance Académico de Solicitantes</h3>
-        <canvas id="avance"></canvas>
-    </div>
-</div>
-
-<div class="grid-container">
-    <div class="card full-width">
-        <h3>🕸️ Mapa de Riesgo: Solicitudes vs. Centralidad en el Grafo</h3>
-        <p style="font-size:12px; color:#666;">Cuadrante Superior Derecho = <b>ALTO RIESGO</b>. Materias muy solicitadas y centrales en la malla (prerrequisitos de muchas otras).</p>
-        <div style="height: 400px;">
-            <canvas id="scatterChart"></canvas>
-        </div>
+    <div style="height: 350px;">
+        <canvas id="scatterChart"></canvas>
     </div>
 </div>
 
 <footer>
-    © Representación Estudiantil - Ingeniería Agrícola UNAL | Basado en datos de sobrecupos & Análisis de Malla
+    Generado para la Representación Estudiantil - Ingeniería Agrícola UNAL
 </footer>
 
 <script>
-    // Configuración Global
     Chart.defaults.font.family = "'Roboto', sans-serif";
     Chart.defaults.color = '#555';
 
-    // 1. Gráfico TOP Materias Puente (Combinando Solicitudes e Impacto)
-    // Datos extraídos de Materias_Puente.csv
-    new Chart(document.getElementById('bridgeChart'), {
+    // 1. GRAFICO FACULTAD (Barras Horizontales)
+    // Datos extraídos de dashboard_facultad_vs_agricola.html
+    new Chart(document.getElementById('facultyChart'), {
         type: 'bar',
         data: {
-            labels: ['Hidrología', 'Mec. Sólidos', 'Poscosecha F&H', 'Mec. Suelos', 'Estática', 'Mec. Fluidos', 'Ing. Económica'],
+            labels: ['Sistemas', 'Civil', 'Electrónica', 'Eléctrica', 'Mecánica', 'Industrial', 'Mecatrónica', 'Química', 'Agrícola'],
+            datasets: [{
+                label: 'Total Solicitudes',
+                data: [1293, 1110, 948, 730, 659, 495, 374, 360, 334],
+                backgroundColor: [
+                    '#e0e0e0', '#e0e0e0', '#e0e0e0', '#e0e0e0', 
+                    '#e0e0e0', '#e0e0e0', '#e0e0e0', '#e0e0e0', 
+                    '#2d572c' // Resaltamos Agrícola en verde
+                ],
+                borderWidth: 0,
+                borderRadius: 4
+            }]
+        },
+        options: {
+            indexAxis: 'y', // Barras horizontales
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { beginAtZero: true } }
+        }
+    });
+
+    // 2. RADAR COMPARATIVO TIPOLOGÍAS (Normalizado a %)
+    // Datos: Facultad total aprox 6085. Agrícola 334. Calculamos porcentajes.
+    // Fac: DiscC (37%), FundB (24%), FundOpt (13%), Libre (12%) ...
+    // Agri: DiscC (33%), FundB (26%), FundOpt (18%), Libre (15%) ...
+    new Chart(document.getElementById('radarTipologias'), {
+        type: 'radar',
+        data: {
+            labels: ['Disc. Obligatoria', 'Fund. Obligatoria', 'Fund. Optativa', 'Libre Elección', 'Disc. Optativa', 'Nivelación'],
             datasets: [
                 {
-                    label: 'Solicitudes Totales',
-                    data: [14, 13, 13, 12, 11, 7, 12],
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                    order: 2
+                    label: 'Promedio Facultad',
+                    data: [37, 24, 13, 12, 11, 1], // Aproximados del html anterior
+                    borderColor: '#95a5a6',
+                    backgroundColor: 'rgba(149, 165, 166, 0.2)',
+                    pointRadius: 0
                 },
                 {
-                    label: 'Indicador de Puente (Impacto)',
-                    data: [28, 26, 26, 24, 22, 21, 12], // NumPrerequisitos * Solicitudes
-                    type: 'line',
-                    borderColor: '#e74c3c',
-                    backgroundColor: '#e74c3c',
-                    borderWidth: 2,
-                    pointRadius: 4,
-                    order: 1,
-                    yAxisID: 'y1'
+                    label: 'Ing. Agrícola',
+                    data: [33, 26, 18, 15, 6, 2], // Datos reales Agri %
+                    borderColor: '#2d572c',
+                    backgroundColor: 'rgba(45, 87, 44, 0.4)',
+                    pointBackgroundColor: '#2d572c'
                 }
             ]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: { beginAtZero: true, title: {display: true, text: 'Número de Solicitudes'} },
-                y1: { beginAtZero: true, position: 'right', grid: {drawOnChartArea: false}, title: {display: true, text: 'Puntaje de Impacto (Bloqueo)'} }
-            }
+            scales: { r: { suggesteMin: 0, suggestedMax: 40 } },
+            plugins: { legend: { position: 'bottom' } }
         }
     });
 
-    // 2. Distribución Tipologías
-    new Chart(document.getElementById('tipologias'), {
-        type: 'doughnut',
-        data: {
-            labels: ['Disciplinar (C)', 'Fund. Oblig (B)', 'Fund. Optativa (B)', 'Libre Elección (L)', 'Disc. Optativa (C)', 'Nivelación (P)'],
-            datasets: [{
-                data: [110, 87, 60, 51, 19, 5],
-                backgroundColor: ['#2d572c', '#4caf50', '#81c784', '#ffb74d', '#ff9800', '#9e9e9e']
-            }]
-        },
-        options: { cutout: '60%', plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: {size: 11} } } } }
-    });
-
-    // 3. Rango de Avance
-    new Chart(document.getElementById('avance'), {
+    // 3. TOP MATERIAS AGRÍCOLA (Barra simple)
+    new Chart(document.getElementById('topMateriasChart'), {
         type: 'bar',
         data: {
-            labels: ['0-25%', '25-50%', '50-75%', '75-100%'],
+            labels: ['Finanzas', 'Cálculo Dif.', 'Hidrología', 'Mec. Sólidos', 'Const. Rurales'],
             datasets: [{
-                label: 'Estudiantes',
-                data: [88, 99, 108, 39],
-                backgroundColor: '#2d572c',
-                borderRadius: 4
+                label: 'Solicitudes',
+                data: [28, 20, 14, 13, 13],
+                backgroundColor: ['#81c784', '#81c784', '#e74c3c', '#e74c3c', '#81c784'] // Rojo para las criticas estructurales
             }]
         },
-        options: { scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false } } }
+        options: {
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true } }
+        }
     });
 
-    // 4. SCATTER CHART: Centralidad vs Solicitudes
-    // Datos cruzados de Solicitudes (index) y Centralidad (CSV)
+    // 4. SCATTER PLOT (Centralidad vs Demanda - EL ESTRATÉGICO)
     const scatterData = [
-        { x: 28, y: 0, r: 5, label: 'Finanzas' }, // Alta demanda, baja centralidad (asumida 0 o baja en CSV)
-        { x: 20, y: 3, r: 8, label: 'Cálculo Diferencial' }, // Centralidad 3
-        { x: 14, y: 3, r: 8, label: 'Hidrología' }, // Centralidad 3
-        { x: 13, y: 5, r: 10, label: 'Mecánica Sólidos' }, // Centralidad 5 (ALTA!)
-        { x: 13, y: 1, r: 5, label: 'Constr. Rurales' },
-        { x: 11, y: 4, r: 9, label: 'Estática' }, // Centralidad 4
-        { x: 7, y: 5, r: 8, label: 'Mec. Fluidos' }, // Centralidad 5
-        { x: 4, y: 7, r: 6, label: 'Cálculo Integral' }, // Centralidad 7 (MAX!)
-        { x: 12, y: 4, r: 7, label: 'Programación OO' } // Asumida centralidad media
+        { x: 28, y: 1, r: 6, label: 'Finanzas' },
+        { x: 20, y: 3, r: 8, label: 'Cálculo Diferencial' },
+        { x: 14, y: 3, r: 8, label: 'Hidrología' },
+        { x: 13, y: 5, r: 10, label: 'Mecánica Sólidos' },
+        { x: 13, y: 1, r: 6, label: 'Constr. Rurales' },
+        { x: 11, y: 4, r: 9, label: 'Estática' },
+        { x: 7, y: 5, r: 8, label: 'Mec. Fluidos' },
+        { x: 4, y: 7, r: 6, label: 'Cálculo Integral' }
     ];
 
     new Chart(document.getElementById('scatterChart'), {
@@ -213,8 +212,7 @@
                 data: scatterData,
                 backgroundColor: context => {
                     const v = context.raw;
-                    // Rojo si es alta centralidad Y alta demanda
-                    if(v && v.y >= 4 && v.x > 10) return 'rgba(231, 76, 60, 0.8)'; 
+                    if(v && v.y >= 4) return 'rgba(231, 76, 60, 0.8)'; // Rojo si es muy central
                     return 'rgba(45, 87, 44, 0.6)';
                 }
             }]
@@ -224,21 +222,16 @@
             maintainAspectRatio: false,
             plugins: {
                 tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            return context.raw.label + ': ' + context.raw.x + ' solic. | Centralidad: ' + context.raw.y;
-                        }
-                    }
+                    callbacks: { label: ctx => ctx.raw.label + ': ' + ctx.raw.x + ' solic.' }
                 },
                 legend: { display: false }
             },
             scales: {
-                x: { title: { display: true, text: 'Cantidad de Solicitudes' }, beginAtZero: true },
-                y: { title: { display: true, text: 'Centralidad en la Malla (Importancia)' }, beginAtZero: true }
+                x: { title: { display: true, text: 'Cantidad de Solicitudes' } },
+                y: { title: { display: true, text: 'Centralidad (Impacto en Malla)' }, min: 0, max: 8 }
             }
         }
     });
 </script>
-
 </body>
 </html>
